@@ -1,0 +1,40 @@
+body{
+  font-size: 18px;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .8);
+}
+nav > p {
+  margin: 1rem;
+}
+
+button{
+  display: inline-block;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px #999;
+  border: none;
+}
+button:active{
+  box-shadow: inset 2px 2px 1px #666;
+}
+table{
+  width: 100%;
+}
+tr:nth-child(even){
+  background-color: #efefef;
+}
+th, td{
+  padding: .5em 1em;
+  text-align: center;
+}
+img{
+  max-height: 4em;
+}
+#container{
+  margin-top: 4rem;
+}

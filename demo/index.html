@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Memory &amp; DOM allocation</title>
+    <meta charset="utf-8">
+    <script src="js/klass.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/model/monster.js"></script>
+    <script src="js/model/monster-list.js"></script>
+    <script src="js/model/monster-factory.js"></script>
+    <script src="js/model/monster-list-length.js"></script>
+    <script src="js/view/control.js"></script>
+    <script src="js/view/counter.js"></script>
+    <script src="js/view/row.js"></script>
+    <script src="js/view/table.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+  </head>
+  <body>
+    <div id="container">
+    </div>
+    <template id="counter">
+      <p># of Monsters: <span data-role="count">0</span></p>
+    </template>
+    <template id="control">
+      <nav>
+        <p>
+          <button data-role="add">Add a monster</button>
+          <button data-role="add" data-n="5000">Add 5000 monsters</button>
+          <button data-role="clear">Remove all monsters</button>
+          <button data-role="render">Show first < 100 monsters</button>
+        </p>
+      </nav>
+    </template>
+    <template id="monster-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th><th>Name</th><th>Rarelity</th><th>Life</th><th>Attck</th><th>Defence</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </template>
+    <template id="monster">
+      <tr>
+        <td>
+          <img src="">
+        </td>
+        <td data-role="name">
+        </td>
+        <td data-role="rarelity">
+        </td>
+        <td data-role="life">
+        </td>
+        <td data-role="attack">
+        </td>
+        <td data-role="defence">
+        </td>
+      </tr>
+    </template>
+    <script>
+      var app;
+      App.start({
+        images: "images/all.json",
+        container: document.querySelector("#container"),
+        template: {
+          counter: document.querySelector("#counter"),
+          control: document.querySelector("#control"),
+          monsterList: document.querySelector("#monster-list"),
+          monster: document.querySelector("#monster")
+        }
+      }).then(running => app = running).catch(error => console.log(error));
+    </script>
+  </body>
+</html>
