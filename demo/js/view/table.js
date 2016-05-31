@@ -30,9 +30,14 @@ const Table = Klass.define(function(){
       return this.el;
     },
     update: function(){
+      if(this.body){
+        this.table.removeChild(this.body);
+      }
       this.body = document.createElement("tbody");
       this.table.appendChild(this.body);
-      this.body.appendChild(doRender(this.model, this.rowTemplate, this.maxItems));
+      const cells =
+              doRender(this.model, this.rowTemplate, this.maxItems);
+      this.body.appendChild(cells);
       return this.el;
     }
   };
