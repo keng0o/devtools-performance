@@ -1,17 +1,16 @@
 const Table = Klass.define(function(){
   const doRender = function(root, list, template, maxItems){
-    const rendered = [];
     const toRender = Math.min(maxItems, list.length);
-    while(rendered.length < toRender){
-      let index = Util.randomInt(0, list.length);
-      if(!rendered.includes(index)){
-        let tr = new Row(list.getMonsterAt(index), template);
-        let el = tr.render();
-        root.appendChild(el);
-        rendered.push(index);
-      }
+    for(let rendered = 0; rendered < toRender; rendered++){
+      let tr = new Row(list.getMonsterAt(rendered), template);
+      let el = tr.render();
+      root.appendChild(el);
     }
     return root;
+  };
+
+  const fib = function(n){
+    return n < 2? 1: fib(n - 1) + fib(n - 2);
   };
 
   return {
@@ -33,6 +32,8 @@ const Table = Klass.define(function(){
         this.table.removeChild(this.body);
       }
       this.body = document.createElement("tbody");
+      const n = fib(30);
+      console.log(`fib(30) = ${n}`);
       this.table.appendChild(this.body);
       doRender(this.body, this.model, this.rowTemplate, this.maxItems);
       return this.el;
