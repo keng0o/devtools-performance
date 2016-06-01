@@ -57,7 +57,7 @@ const App = (function(){
       }
       const context = this.context;
       this.clear(context);
-      const fib = this.fibonacci(35);
+      // const fib = this.fibonacci(35);
       this.particles.update(this, dt);
       window.requestAnimationFrame(timestamp => this.update(timestamp));
     },
