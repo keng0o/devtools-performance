@@ -1,8 +1,7 @@
 const Table = Klass.define(function(){
-  const doRender = function(list, template, maxItems){
+  const doRender = function(root, list, template, maxItems){
     const rendered = [];
     const toRender = Math.min(maxItems, list.length);
-    const root = document.createDocumentFragment();
     while(rendered.length < toRender){
       let index = Util.randomInt(0, list.length);
       if(!rendered.includes(index)){
@@ -35,9 +34,7 @@ const Table = Klass.define(function(){
       }
       this.body = document.createElement("tbody");
       this.table.appendChild(this.body);
-      const cells =
-              doRender(this.model, this.rowTemplate, this.maxItems);
-      this.body.appendChild(cells);
+      doRender(this.body, this.model, this.rowTemplate, this.maxItems);
       return this.el;
     }
   };
